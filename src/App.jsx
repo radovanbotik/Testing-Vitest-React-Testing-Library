@@ -13,7 +13,7 @@ const buttonSpec = {
 
 function App() {
   const [buttonStyle, setButtonStyle] = useState("red");
-  const [isChecked, setIsChecked] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const changeButtonStyle = () => {
     if (buttonStyle === "red") setButtonStyle("blue");
@@ -27,15 +27,17 @@ function App() {
       </button> */}
       <button
         role="button"
-        className={`${buttonStyle === "red" && buttonSpec.red.bg} ${buttonStyle === "blue" && buttonSpec.blue.bg}`}
+        className={`${buttonStyle === "red" && buttonSpec.red.bg} ${buttonStyle === "blue" && buttonSpec.blue.bg} ${
+          isDisabled && "bg-zinc-500"
+        }`}
         onClick={changeButtonStyle}
-        disabled={isChecked}
+        disabled={isDisabled}
       >
         {buttonStyle === "red" && buttonSpec.red.text}
         {buttonStyle === "blue" && buttonSpec.blue.text}
       </button>
       <label htmlFor="disable-button">disable button</label>
-      <input id="disable-button" type="checkbox" role="checkbox" onClick={e => setIsChecked(e.target.checked)} />
+      <input id="disable-button" type="checkbox" role="checkbox" onClick={e => setIsDisabled(e.target.checked)} />
     </div>
   );
 }

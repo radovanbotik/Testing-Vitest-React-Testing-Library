@@ -48,3 +48,21 @@ test("button disabled upon checkbox checking", () => {
   expect(button).toBeEnabled();
   expect(checkbox).not.toBeChecked();
 });
+test("button changes to grey upon disabling", () => {
+  render(<App />);
+  const button = screen.getByRole("button");
+  const checkbox = screen.getByRole("checkbox", { name: "disable button" });
+  fireEvent.click(checkbox);
+  expect(button).toBeDisabled();
+  expect(button).toHaveClass("bg-zinc-500");
+  fireEvent.click(checkbox);
+  expect(button).toBeEnabled();
+  expect(button).toHaveClass("bg-red-500");
+  fireEvent.click(button);
+  expect(button).toHaveClass("bg-blue-500");
+  fireEvent.click(checkbox);
+  expect(button).toBeDisabled();
+  expect(button).toHaveClass("bg-zinc-500");
+  fireEvent.click(checkbox);
+  expect(button).toBeEnabled();
+});
