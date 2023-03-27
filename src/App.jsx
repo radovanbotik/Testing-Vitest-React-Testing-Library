@@ -34,7 +34,8 @@ function App() {
         {buttonStyle === "red" && buttonSpec.red.text}
         {buttonStyle === "blue" && buttonSpec.blue.text}
       </button>
-      <input type="checkbox" role="checkbox" onClick={e => setIsChecked(e.target.checked)} />
+      <label htmlFor="disable-button">disable button</label>
+      <input id="disable-button" type="checkbox" role="checkbox" onClick={e => setIsChecked(e.target.checked)} />
     </div>
   );
 }

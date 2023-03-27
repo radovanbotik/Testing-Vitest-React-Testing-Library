@@ -33,14 +33,14 @@ test("initial conditions", () => {
   const button = screen.getByRole("button");
   expect(button).toBeEnabled();
   //check that the checkbox starts out unchecked
-  const checkbox = screen.getByRole("checkbox");
+  const checkbox = screen.getByRole("checkbox", { name: "disable button" });
   expect(checkbox).not.toBeChecked();
 });
 
 test("button disabled upon checkbox checking", () => {
   render(<App />);
   const button = screen.getByRole("button");
-  const checkbox = screen.getByRole("checkbox");
+  const checkbox = screen.getByRole("checkbox", { name: "disable button" });
   fireEvent.click(checkbox);
   expect(button).toBeDisabled();
   expect(checkbox).toBeChecked();
